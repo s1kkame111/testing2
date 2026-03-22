@@ -44,8 +44,12 @@ const data = [
 ]
 
 const _ = (id)=>document.getElementById(id)
-const cards = data.map((i, index)=>`<div class="card" id="card${index}" style="background-image:url(${i.image})"  ></div>`).join('')
-
+const cards = data.map((i, index)=>
+  <div class="card" id="card${index}" 
+    style="background-image:url(${i.image})" 
+    onclick="handleCardClick(${index})">
+  </div>
+).join('')
 const cardContents = data.map((i, index)=>`<div class="card-content" id="card-content-${index}">
 <div class="content-start"></div>
 <div class="content-place">${i.place}</div>
@@ -328,8 +332,6 @@ async function loop() {
   await animate(".indicator", 2, { x: 0 });
   await animate(".indicator", 0.8, { x: window.innerWidth, delay: 0.3 });
   set(".indicator", { x: -window.innerWidth });
-  await step();
-  loop();
 }
 
 async function loadImage(src) {
