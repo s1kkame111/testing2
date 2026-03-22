@@ -328,13 +328,6 @@ function step() {
   });
 }
 
-function handleCardClick(index) {
-  if (index !== order[0]) {
-    clicks += 1;
-    step();
-  }
-}
-
 async function loop() {
   await animate(".indicator", 2, { x: 0 });
   await animate(".indicator", 0.8, { x: window.innerWidth, delay: 0.3 });
